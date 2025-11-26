@@ -1,0 +1,7 @@
+{
+  "name": "nodemon-config",
+  "watch": ["src"],
+  "ext": "ts,json",
+  "ignore": ["src/**/*.spec.ts"],
+  "exec": "ts-node src/server.ts"
+}

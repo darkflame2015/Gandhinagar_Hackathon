@@ -1,0 +1,20 @@
+{
+  "name": "agri-lending-platform",
+  "version": "1.0.0",
+  "description": "Production-ready digital lending solution for agriculture with 15-day forward risk dashboard",
+  "main": "server.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npx ts-node src/server.ts",
+    "client": "cd frontend && npm start",
+    "build": "cd backend && tsc && cd ../frontend && npm run build",
+    "start": "cd backend && node dist/server.js",
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install"
+  },
+  "keywords": ["agri-lending", "risk-dashboard", "digital-lending"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
