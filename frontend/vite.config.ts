@@ -11,5 +11,23 @@ export default defineConfig({
         changeOrigin: true
       }
     }
+  },
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'mui-vendor': ['@mui/material', '@mui/icons-material'],
+          'redux-vendor': ['@reduxjs/toolkit', 'react-redux'],
+          'charts-vendor': ['recharts']
+        }
+      }
+    }
+  },
+  preview: {
+    port: 3000
   }
 });
