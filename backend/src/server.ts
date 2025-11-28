@@ -47,12 +47,21 @@ const connectDB = async () => {
 
 connectDB();
 
-// Health check
+// Health check (both root and /api for compatibility)
 app.get('/health', (req: Request, res: Response) => {
   res.json({ 
     status: 'OK', 
     timestamp: new Date().toISOString(),
     service: 'Agri Lending Platform',
+    version: '1.0.0'
+  });
+});
+
+app.get('/api/health', (req: Request, res: Response) => {
+  res.json({ 
+    status: 'OK', 
+    timestamp: new Date().toISOString(),
+    service: 'Agri Lending Platform API',
     version: '1.0.0'
   });
 });
