@@ -1,4 +1,13 @@
-FROM node:18-alpine
+FROM node:20-alpine
+
+# Install Python and build tools required for better-sqlite3
+RUN apk add --no-cache \
+    python3 \
+    make \
+    g++ \
+    gcc \
+    libc-dev \
+    sqlite-dev
 
 WORKDIR /app
 
