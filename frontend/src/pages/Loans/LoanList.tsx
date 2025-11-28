@@ -59,42 +59,48 @@ export default function LoanList() {
         </Button>
       </Box>
 
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell><strong>Loan ID</strong></TableCell>
-              <TableCell><strong>Type</strong></TableCell>
-              <TableCell><strong>Amount</strong></TableCell>
-              <TableCell><strong>Status</strong></TableCell>
-              <TableCell><strong>Applied Date</strong></TableCell>
-              <TableCell><strong>Actions</strong></TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {loans.map((loan) => (
-              <TableRow key={loan.loanId} hover>
-                <TableCell>{loan.loanId}</TableCell>
-                <TableCell>{loan.loanType}</TableCell>
-                <TableCell>₹{loan.amount.toLocaleString()}</TableCell>
-                <TableCell>
-                  <Chip label={loan.status} color={getStatusColor(loan.status)} size="small" />
-                </TableCell>
-                <TableCell>{new Date(loan.applicationDate).toLocaleDateString()}</TableCell>
-                <TableCell>
-                  <Button
-                    size="small"
-                    variant="outlined"
-                    onClick={() => navigate(`/loans/${loan.loanId}`)}
-                  >
-                    View Details
-                  </Button>
-                </TableCell>
+      {loading ? (
+        <Paper sx={{ p: 3, textAlign: 'center' }}>
+          <Typography>Loading loans...</Typography>
+        </Paper>
+      ) : (
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell><strong>Loan ID</strong></TableCell>
+                <TableCell><strong>Type</strong></TableCell>
+                <TableCell><strong>Amount</strong></TableCell>
+                <TableCell><strong>Status</strong></TableCell>
+                <TableCell><strong>Applied Date</strong></TableCell>
+                <TableCell><strong>Actions</strong></TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {loans.map((loan) => (
+                <TableRow key={loan.loanId} hover>
+                  <TableCell>{loan.loanId}</TableCell>
+                  <TableCell>{loan.loanType}</TableCell>
+                  <TableCell>₹{loan.amount.toLocaleString()}</TableCell>
+                  <TableCell>
+                    <Chip label={loan.status} color={getStatusColor(loan.status)} size="small" />
+                  </TableCell>
+                  <TableCell>{new Date(loan.applicationDate).toLocaleDateString()}</TableCell>
+                  <TableCell>
+                    <Button
+                      size="small"
+                      variant="outlined"
+                      onClick={() => navigate(`/loans/${loan.loanId}`)}
+                    >
+                      View Details
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )}
     </Box>
   );
 }

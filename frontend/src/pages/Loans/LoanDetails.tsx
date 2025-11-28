@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Box, Paper, Typography, Grid, Chip, Divider, Button } from '@mui/material';
+import { Box, Paper, Typography, Grid, Chip, Divider } from '@mui/material';
 import { loanAPI } from '../../services/api';
 
 export default function LoanDetails() {

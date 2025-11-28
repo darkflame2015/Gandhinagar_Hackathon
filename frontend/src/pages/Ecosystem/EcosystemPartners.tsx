@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Box, Paper, Typography, Grid, Card, CardContent, Chip } from '@mui/material';
+import { Box, Typography, Grid, Card, CardContent, Chip } from '@mui/material';
 import { ecosystemAPI } from '../../services/api';
 
 export default function EcosystemPartners() {
   const [schemes, setSchemes] = useState<any[]>([]);
   const [suppliers, setSuppliers] = useState<any[]>([]);
   const [warehouses, setWarehouses] = useState<any[]>([]);
-  const [fpos, setFpos] = useState<any[]>([]);
 
   useEffect(() => {
     fetchData();
@@ -14,17 +13,15 @@ export default function EcosystemPartners() {
 
   const fetchData = async () => {
     try {
-      const [schemesRes, suppliersRes, warehousesRes, fposRes] = await Promise.all([
+      const [schemesRes, suppliersRes, warehousesRes] = await Promise.all([
         ecosystemAPI.getSchemes(),
         ecosystemAPI.getSuppliers(),
         ecosystemAPI.getWarehouses(),
-        ecosystemAPI.getFPOs(),
       ]);
       
       setSchemes(schemesRes.data.data);
       setSuppliers(suppliersRes.data.data);
       setWarehouses(warehousesRes.data.data);
-      setFpos(fposRes.data.data);
     } catch (error) {
       console.error('Error fetching ecosystem data:', error);
     }
