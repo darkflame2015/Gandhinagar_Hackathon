@@ -7,7 +7,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd backend && npx ts-node src/server.ts",
     "client": "cd frontend && npm start",
-    "build": "cd backend && tsc && cd ../frontend && npm run build",
+    "build": "cd frontend && npm install && npm run build",
     "start": "cd backend && node dist/server.js",
     "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install"
   },
