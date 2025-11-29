@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://agrilend-backend.onrender.com/api';
+// Use relative path for Vercel (same domain) or absolute URL for separate deployment
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
 console.log('🔗 API Base URL:', API_BASE_URL);
 console.log('🌍 Environment:', import.meta.env.MODE);
