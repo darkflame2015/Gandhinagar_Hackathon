@@ -1,0 +1,9 @@
+# Vercel Project Configuration
+
+This file helps Vercel detect the correct build settings.
+
+Build settings:
+- Framework: Vite
+- Root Directory: frontend
+- Build Command: npm run build
+- Output Directory: dist
